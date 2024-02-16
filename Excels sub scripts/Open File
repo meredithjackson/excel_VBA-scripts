@@ -1,0 +1,13 @@
+Sub OpenIntra() 
+
+' 
+
+' OpenIntra Macro 
+
+ 
+
+' 
+
+    Workbooks.Open Filename:=Sheets("UserDetail").Range("a2").SpecialCells(xlCellTypeVisible) 
+
+End Sub 
