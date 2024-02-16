@@ -1,0 +1,103 @@
+Sub Format() 
+
+' 
+
+' Format2 Macro 
+
+Dim wkb1 As Excel.Workbook 
+
+Dim wks1 As Excel.Worksheet 
+
+ 
+
+Set wkb1 = Excel.Workbooks("Retail TPR Intraday Read.xlsx") 
+
+Set wks1 = wkb1.Worksheets("Activation Read") 
+
+' 
+
+    With wks1.PivotTables("PivotTableRetail").PivotFields(" Region") 
+
+        .PivotItems("Northwest").Visible = False 
+
+        .PivotItems("Southwest").Visible = False 
+
+        .PivotItems("North Central").Visible = False 
+
+        .PivotItems("South Central").Visible = False 
+
+        .PivotItems("Northeast").Visible = False 
+
+        .PivotItems("Puerto Rico").Visible = False 
+
+    End With 
+
+    wks1.PivotTables("PivotTableRetail").PivotSelect "' Region'[All]", _ 
+
+        xlLabelOnly + xlFirstRow, True 
+
+    wks1.PivotTables("PivotTableRetail").PivotFields(" Region").DrillTo _ 
+
+        "Store Name" 
+
+    Columns("B:E").Select 
+
+    Selection.Copy 
+
+    Columns("m:m").Select 
+
+    wks1.Paste 
+
+    Range("m16").Select 
+
+    ActiveCell.PivotTable.Name = "Channel" 
+
+    Application.CutCopyMode = False 
+
+    wkb1.ShowPivotTableFieldList = True 
+
+    wks1.PivotTables("Channel").PivotFields("STORE NAME").Orientation = _ 
+
+        xlHidden 
+
+    wks1.PivotTables("Channel").PivotFields("STORE ").Orientation = _ 
+
+        xlHidden 
+
+    wks1.PivotTables("Channel").PivotFields("DISTRICT").Orientation = _ 
+
+        xlHidden 
+
+    wks1.PivotTables("Channel").PivotFields("Market").Orientation = _ 
+
+        xlHidden 
+
+    With wks1.PivotTables("Channel").PivotFields("ChannelType") 
+
+        .Orientation = xlRowField 
+
+        .Position = 2 
+
+    End With 
+
+    With wks1.PivotTables("Channel").PivotFields(" Region") 
+
+        .Orientation = xlPageField 
+
+        .Position = 1 
+
+    End With 
+
+    wks1.PivotTables("Channel").PivotFields("ChannelType").AutoSort _ 
+
+        xlAscending, "ChannelType" 
+
+    wks1.PivotTables("Channel").PivotFields(" ACTS").Orientation = _ 
+
+        xlHidden 
+
+    wks1.PivotTables("Channel").PivotFields("TARGET").Orientation = _ 
+
+        xlHidden 
+
+End Sub 
