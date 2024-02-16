@@ -1,0 +1,27 @@
+Sub SEExport() 
+
+' 
+
+' SEExport Macro 
+
+' 
+
+Application.DisplayAlerts = False 
+
+' 
+
+    Sheets(Array("SESummary", "SE")).Select 
+
+    Sheets("SESummary").Activate 
+
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:= _ 
+
+        Sheets("UserDetail").Range("a5").SpecialCells(xlCellTypeVisible) & "SE 2PM Read", _ 
+
+        Quality:=xlQualityStandard, IncludeDocProperties:=True, IgnorePrintAreas _ 
+
+        :=False, OpenAfterPublish:=False 
+
+    Application.DisplayAlerts = True 
+
+End Sub 
