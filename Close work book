@@ -1,0 +1,11 @@
+Sub CloseBook() 
+
+    Application.DisplayAlerts = False 
+
+    Application.Quit 
+
+    Application.DisplayAlerts = False 
+
+     
+
+End Sub 
