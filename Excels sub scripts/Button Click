@@ -1,0 +1,81 @@
+Sub ButtonclickError() 
+
+ 
+
+ 
+
+Call DlIntra 
+
+Call OpenIntra 
+
+Call Format 
+
+Call RefreshAll 
+
+Call RefreshAll 
+
+Call IntraWorkbook 
+
+ 
+
+If Sheets("UserDetail").Range("a8") = "yes" Then 
+
+ 
+
+Call IntraWorkbook 
+
+Call SEExport 
+
+Call CARExport 
+
+Call TKGExport 
+
+Call NFLExport 
+
+Call sFLExport 
+
+Call wFLExport 
+
+Call TPRPivot 
+
+Call IntraWorkbook 
+
+Call SEMail 
+
+Call CARMail 
+
+Call TKGMail 
+
+Call NFLMail 
+
+Call SFLMail 
+
+Call WFLMail 
+
+Call TPRMail 
+
+Call Buttons 
+
+Call Savebook 
+
+Call CloseBook 
+
+ 
+
+Else 
+
+Call ErrorMail 
+
+Call Buttons 
+
+Call Savebook 
+
+Call CloseBook 
+
+ 
+
+ 
+
+End If 
+
+End Sub 
