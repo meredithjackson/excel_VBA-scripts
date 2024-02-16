@@ -1,0 +1,51 @@
+Sub RefreshPPT2() 
+
+ 
+
+Dim i As Long 
+
+Dim s As Long 
+
+ 
+
+On Error Resume Next 
+
+ 
+
+Set ppt = CreateObject("PowerPoint.Application") 
+
+ppt.Visible = True 
+
+ppt.Presentations.Open "C:\Users\Ameyer8\Documents\Southeast Business Planning Template.pptx", Untitled:=msoTrue 
+
+With ppt.ActivePresentation 
+
+ppt.ActivePresentation.UpdateLinks 
+
+For i = 2 To ppt.ActivePresentation.Slides.Count 
+
+For s = 1 To ppt.ActivePresentation.Slides(i).Shapes.Count 
+
+ppt.ActivePresentation.Save 
+
+ppt.ActivePresentation.Slides(i).Shapes(s).LinkFormat.BreakLink 
+
+Next s 
+
+Next i 
+
+ppt.ActivePresentation.SaveAs Filename:="C:\Users\Ameyer8\Documents\Southeast Business Planning Presentation.pptx" 
+
+ppt.ActivePresentation.Slides(i).Shapes(s).LinkFormat.BreakLink 
+
+ppt.Quit 
+
+Set ppt = Nothing 
+
+End With 
+
+ 
+
+ 
+
+End Sub 
