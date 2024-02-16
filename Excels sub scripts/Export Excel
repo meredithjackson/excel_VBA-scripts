@@ -1,0 +1,57 @@
+Sub Report() 
+
+' 
+
+' Carolinas Macro 
+
+' 
+
+Application.DisplayAlerts = False 
+
+mypath = Sheets("UserDetail").Range("a5").SpecialCells(xlCellTypeVisible) 
+
+ 
+
+' 
+
+    Sheets(Array("CarolinasCORFocusReport", "CarolinasTPRFocusReport")).Select 
+
+    Sheets(Array("CarolinasCORFocusReport", "CarolinasTPRFocusReport")).Copy 
+
+    Sheets(Array("CarolinasCORFocusReport", "CarolinasTPRFocusReport")).Select 
+
+   Sheets("CarolinasCORFocusReport").Activate 
+
+   Cells.Select 
+
+    Selection.Copy 
+
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _ 
+
+        :=False, Transpose:=False 
+
+    Columns("A:A").Select 
+
+    With Selection.Font 
+
+        .ThemeColor = xlThemeColorDark1 
+
+        .TintAndShade = 0 
+
+    End With 
+
+    Range("b7").Select 
+
+    ActiveWorkbook.SaveAs Filename:= _ 
+
+         mypath & "CarolinasFocusReport" & Format(Now(), "MMDDYYYY") & ".xlsx", _ 
+
+        FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False 
+
+        Application.DisplayAlerts = True 
+
+        Windows("CarolinasFocusReport" & Format(Now(), "MMDDYYYY") & ".xlsx").Activate 
+
+        ActiveWindow.Close 
+
+End Sub 
