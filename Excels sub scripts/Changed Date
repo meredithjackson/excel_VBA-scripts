@@ -1,0 +1,41 @@
+Sub ChangeDate() 
+
+ 
+
+' ChangeDate Macro 
+
+' 
+
+Sheets("Userdetail").Select 
+
+' 
+
+    ActiveWorkbook.SlicerCaches("Slicer_Cal_Month_End").VisibleSlicerItemsList = _ 
+
+        Array( _ 
+
+        "[Dim Date].[Cal Month End].&[" & Sheets("userdetail").Range("g3").Value & "T00:00:00]") 
+
+         
+
+        ActiveWorkbook.SlicerCaches("Slicer_Month").VisibleSlicerItemsList = Array( _ 
+
+        "[Dim Date].[Month].&[" & Sheets("userdetail").Range("h3").Value & "]") 
+
+         
+
+'        ActiveWorkbook.SlicerCaches("Slicer_YearMonth").VisibleSlicerItemsList = Array( _ 
+
+   '     "(yearmonth).&(" & Sheets("userdetail").Range("h3").Value & ")") 
+
+         
+
+        
+
+  ' ActiveWorkbook.SlicerCaches ("Slicer_YearMonth") .PivotFields("YearMonth") 
+
+   '     .SlicerItems("2018-07").Selected = True 
+
+         
+
+End Sub 
