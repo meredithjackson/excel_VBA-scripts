@@ -1,0 +1,35 @@
+Sub DlIntra() 
+
+' 
+
+On Error GoTo Getout 
+
+Application.DisplayAlerts = False 
+
+mypath = Sheets("UserDetail").Range("a2").SpecialCells(xlCellTypeVisible) 
+
+ 
+
+    Workbooks.Open Filename:= _ 
+
+       Sheets("UserDetail").Range("a11").SpecialCells(xlCellTypeVisible) 
+
+     
+
+     
+
+    ActiveWorkbook.SaveAs Filename:= _ 
+
+        mypath, FileFormat:= _ 
+
+        xlOpenXMLWorkbook, CreateBackup:=False 
+
+    Application.DisplayAlerts = True 
+
+    ActiveWorkbook.Close SaveChanges = False 
+
+ 
+
+Getout: 
+
+End Sub 
