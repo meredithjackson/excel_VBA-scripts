@@ -1,0 +1,41 @@
+Sub UpdateAllWorkbooks()
+    Dim folderPath As String
+    Dim filename As String
+    Dim wb As Workbook
+
+    ' Specify the folder path containing the Excel workbooks
+    folderPath = "C:\Your\Folder\Path\" ' Change this to your folder path
+    
+    ' Check if the folder exists
+    If Dir(folderPath, vbDirectory) = "" Then
+        MsgBox "Folder not found!", vbExclamation
+        Exit Sub
+    End If
+    
+    ' Disable screen updating to improve performance
+    Application.ScreenUpdating = False
+    
+    ' Loop through all Excel files in the folder
+    filename = Dir(folderPath & "*.xlsx")
+    Do While filename <> ""
+        ' Open each workbook in the folder
+        Set wb = Workbooks.Open(folderPath & filename)
+        
+        ' Refresh all data connections
+        wb.RefreshAll
+        
+        ' Save changes
+        wb.Save
+        
+        ' Close the workbook
+        wb.Close
+        
+        ' Move to the next file
+        filename = Dir
+    Loop
+    
+    ' Enable screen updating
+    Application.ScreenUpdating = True
+    
+    MsgBox "All workbooks have been updated successfully!", vbInformation
+End Sub
